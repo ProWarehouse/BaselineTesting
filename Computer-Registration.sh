@@ -11,6 +11,7 @@
 #####################################################################
 # GLOBAL VARIABLES
 dialog="/usr/local/bin/dialog"
+jamf=$(which jamf)
 
 title="${4:-"Personalize your Mac"}"
 icon="${5:-"https://euc1.ics.services.jamfcloud.com/icon/hash_a7d0ffb246fac1252f636a06bf31d55d14d274d93a2d5284ce33f47b48ec3264"}"
@@ -41,10 +42,14 @@ ComputerNameDialog="$dialog \
 --button1text \"$button1text\" \
 --button2text \"$button2text\" \
 --messagefont \"size=15\" \
---height 50%"
+--height 50% \
+--blurscreen \
+--ontop"
 
 computerName=$(eval "$ComputerNameDialog" | awk -F " : " '{print $NF}')
 
 scutil --set HostName "$computerName" || echo "Error setting HostName"
 scutil --set LocalHostName "$computerName" || echo "Error setting LocalHostName"
 scutil --set ComputerName "$computerName" ||  echo "Error setting ComputerName"
+
+$jamf recon

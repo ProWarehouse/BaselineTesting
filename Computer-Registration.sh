@@ -13,7 +13,7 @@
 dialog="/usr/local/bin/dialog"
 jamf=$(which jamf)
 
-title="${4:-"Personalize your Mac"}"
+title="${4:-"Register your Mac"}"
 icon="${5:-"https://euc1.ics.services.jamfcloud.com/icon/hash_a7d0ffb246fac1252f636a06bf31d55d14d274d93a2d5284ce33f47b48ec3264"}"
 bannerimage="${6:-"https://probaseline.jamfcloud.com/api/v1/branding-images/download/14"}"
 selecttitle="${7:-""}"
@@ -23,10 +23,10 @@ infobox="#### Support \n - +31 88 776 70 40  \n#### Your Mac \n - macOS {osname}
 message="Personalize your Mac by giving it a name that suits you best. You can enter a name now, or you can do this later via **Self Service**:\n
 * Select the **Pro Warehouse** icon in the menu bar\n
 * Select **Self Service**\n
-* Click the **Personalize** button below the **Computer Name** item and follow the on-screen instructions"
+* Click the **Register** button below the **Computer Name** item and follow the on-screen instructions"
 
 textfield="Computer Name,value=Mac John Appleseed,required"
-button1text="Personalize"
+button1text="Register"
 button2text="Cancel"
 
 
@@ -42,7 +42,8 @@ ComputerNameDialog="$dialog \
 --button1text \"$button1text\" \
 --button2text \"$button2text\" \
 --messagefont \"size=15\" \
---height 50% \
+--width 960 \
+--height 700 \
 --blurscreen \
 --ontop"
 
